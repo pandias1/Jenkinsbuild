@@ -17,9 +17,15 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
+- task: CopyPublishBuildArtifacts@1
+  inputs:
+    ArtifactName: 
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: '- task: DownloadPipelineArtifact@2
   inputs:
-    buildType: 'current'
+    CopyRoot: '*'
+    Contents: '*.war'
+    ArtifactName: '*'
+    ArtifactType: 'Container'
     targetPath: '$(Pipeline.Workspace)''
