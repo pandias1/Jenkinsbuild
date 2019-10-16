@@ -19,4 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    goals: '- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'current'
+    targetPath: '$(Pipeline.Workspace)''
